@@ -29,8 +29,7 @@ public class App {
 					sb.append(System.lineSeparator());
 					line = br.readLine();
 				}
-
-				System.out.println("INPUT :");
+				
 				System.out.println(sb.toString());
 
 				String[] listCommand = sb.toString().split(System.lineSeparator());
@@ -47,7 +46,6 @@ public class App {
 
 		} else {
 			while (true) {
-				System.out.print("Command to execute: ");
 				in = new Scanner(System.in);
 				String commandLine = in.nextLine();
 				_command = commandLine.split(" ");

@@ -49,7 +49,7 @@ public class TableParkingImpl implements TableParking {
 
 		for (int i = 0; i < parkingTable.length; i++) {
 			if (parkingTable != null && parkingTable[i].getColor().equals(colour)) {
-				result = result + parkingTable[i].getRegistrationNo() + ",";
+				result = result + parkingTable[i].getRegistrationNo() + ", ";
 			}
 		}
 
@@ -75,7 +75,7 @@ public class TableParkingImpl implements TableParking {
 					? (flag.equals("regno")) ? parkingTable[i].getRegistrationNo() : parkingTable[i].getColor() : "";
 
 			if (data.equals(param))
-				result = result + parkingTable[i].getSlotNo() + ",";
+				result = result + parkingTable[i].getSlotNo() + ", ";
 
 		}
 		return checkReturn(result);
@@ -127,7 +127,7 @@ public class TableParkingImpl implements TableParking {
 	 * @return true if success to add false if fail to add
 	 */
 	private boolean Parking(Parking newParking) {
-
+		
 		for (int i = 0; i < parkingTable.length; i++) {
 			if (parkingTable[i] == (null)) {
 				int SlotNo = i + 1;
@@ -148,7 +148,7 @@ public class TableParkingImpl implements TableParking {
 	 */
 	private boolean checkReturn(String result) {
 		if (result != "") {
-			System.out.println(result.substring(0, result.length() - 1));
+			System.out.println(result.substring(0, result.length() - 2));
 			return true;
 		} else {
 			System.out.println(notFound);
@@ -159,6 +159,9 @@ public class TableParkingImpl implements TableParking {
 	@Override
 	public boolean execute(String[] command) {
 		boolean _res = false;
+		if (parkingTable == null)
+			return _res;
+		
 		String _command = this.getCommand(command);
 		String params[] = this.getParam(command);
 		switch (_command) {
