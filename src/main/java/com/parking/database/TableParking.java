@@ -3,7 +3,8 @@ package com.parking.database;
 public interface TableParking {
 	/**
 	 * @param command
+	 * @return 
 	 */
-	public void execute(String[] command);
+	public boolean execute(String[] command);
 
 }
