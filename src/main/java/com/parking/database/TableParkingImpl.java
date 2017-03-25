@@ -45,8 +45,11 @@ public class TableParkingImpl implements TableParking {
 	 *         available
 	 */
 	private boolean getRegistrationNumberByColour(String colour) {
+		if (parkingTable == null)
+			return false;
+		
 		String result = "";
-
+		
 		for (int i = 0; i < parkingTable.length; i++) {
 			if (parkingTable != null && parkingTable[i].getColor().equals(colour)) {
 				result = result + parkingTable[i].getRegistrationNo() + ", ";
@@ -68,8 +71,11 @@ public class TableParkingImpl implements TableParking {
 	 *         available
 	 */
 	private boolean getSlotNumber(String param, String flag) {
+		if (parkingTable == null)
+			return false;
+		
 		String result = "";
-
+		
 		for (int i = 0; i < parkingTable.length; i++) {
 			String data = (parkingTable != null)
 					? (flag.equals("regno")) ? parkingTable[i].getRegistrationNo() : parkingTable[i].getColor() : "";
@@ -111,7 +117,7 @@ public class TableParkingImpl implements TableParking {
 	 * @return true if success set null false if fail set null
 	 */
 	public boolean leave(int slotNo) {
-		if (parkingTable.length < slotNo - 1 || parkingTable[slotNo - 1] == null)
+		if (parkingTable == null || parkingTable.length < slotNo - 1 || parkingTable[slotNo - 1] == null)
 			return false;
 
 		parkingTable[slotNo - 1] = null;
@@ -127,6 +133,8 @@ public class TableParkingImpl implements TableParking {
 	 * @return true if success to add false if fail to add
 	 */
 	private boolean Parking(Parking newParking) {
+		if (parkingTable == null)
+			return false;
 		
 		for (int i = 0; i < parkingTable.length; i++) {
 			if (parkingTable[i] == (null)) {
@@ -159,9 +167,7 @@ public class TableParkingImpl implements TableParking {
 	@Override
 	public boolean execute(String[] command) {
 		boolean _res = false;
-		if (parkingTable == null)
-			return _res;
-		
+
 		String _command = this.getCommand(command);
 		String params[] = this.getParam(command);
 		switch (_command) {
