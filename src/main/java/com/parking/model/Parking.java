@@ -1,9 +1,9 @@
 package com.parking.model;
 
 public class Parking {
-	int slotNo;
-	String registrationNo;
-	String color;
+	private int slotNo;
+	private String registrationNo;
+	private String color;
 
 	public int getSlotNo() {
 		return slotNo;
