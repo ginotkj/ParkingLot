@@ -1,0 +1,1 @@
+cat stub.sh parking_lot-1.0.jar > parking_lot && chmod +x parking_lot
